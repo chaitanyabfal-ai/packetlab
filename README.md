@@ -30,6 +30,7 @@ docs/deep-dive.md               concepts from first principles to deep dive, axi
 docs/deep-dive.pdf              PDF rendering of the deep dive (`make pdf`; needs
                                 `pip install -r tools/requirements-docs.txt`, fonts in assets/fonts/)
 docs/wireshark-filters.md       display-filter cheat sheet for every lab
+docs/video-resources.md         curated YouTube videos mapped to each lab/topic
 docs/findings-template.md       template for recording observations per lab
 ```
 
