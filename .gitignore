@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+fixtures/
+*.pcap
+*.log
+labs/*/*.pcap
