@@ -24,6 +24,9 @@ labs/02-tcp-retransmissions/    force loss with netem, observe RTO/fast-retransm
 labs/03-dns-resolution/         capture port 53, decode queries and answers
 labs/04-docker-networks-tunnels/ bridges, overlay/VXLAN, tunnel MTU
 labs/05-bridge-nat/             netns + veth + bridge + MASQUERADE trace
+docs/architecture.md            whole-picture component + packet-path diagrams (Mermaid)
+docs/architecture-diagram.svg   rendered architecture diagram (make diagram)
+docs/deep-dive.md               concepts from first principles to deep dive, axiom by axiom
 docs/wireshark-filters.md       display-filter cheat sheet for every lab
 docs/findings-template.md       template for recording observations per lab
 ```
@@ -45,7 +48,12 @@ Only capture traffic on networks you own or are authorized to observe.
 make test        # run analyzer unit tests (no root needed)
 make fixtures    # write synthetic pcaps into fixtures/
 make analyze FILE=fixtures/handshake.pcap MODE="--handshake --flows"
+make diagram     # regenerate docs/architecture-diagram.svg
 ```
+
+New here? Read [docs/deep-dive.md](docs/deep-dive.md) (concepts from axioms to
+deep dive) and [docs/architecture.md](docs/architecture.md) (whole-picture
+diagram) before running the labs.
 
 Then pick a lab:
 
