@@ -27,6 +27,8 @@ labs/05-bridge-nat/             netns + veth + bridge + MASQUERADE trace
 docs/architecture.md            whole-picture component + packet-path diagrams (Mermaid)
 docs/architecture-diagram.svg   rendered architecture diagram (make diagram)
 docs/deep-dive.md               concepts from first principles to deep dive, axiom by axiom
+docs/deep-dive.pdf              PDF rendering of the deep dive (`make pdf`; needs
+                                `pip install -r tools/requirements-docs.txt`, fonts in assets/fonts/)
 docs/wireshark-filters.md       display-filter cheat sheet for every lab
 docs/findings-template.md       template for recording observations per lab
 ```
@@ -49,6 +51,7 @@ make test        # run analyzer unit tests (no root needed)
 make fixtures    # write synthetic pcaps into fixtures/
 make analyze FILE=fixtures/handshake.pcap MODE="--handshake --flows"
 make diagram     # regenerate docs/architecture-diagram.svg
+make pdf         # regenerate docs/deep-dive.pdf (pip install -r tools/requirements-docs.txt first)
 ```
 
 New here? Read [docs/deep-dive.md](docs/deep-dive.md) (concepts from axioms to

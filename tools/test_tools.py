@@ -128,5 +128,33 @@ class FixtureTest(unittest.TestCase):
             list(pa.read_pcap(bad))
 
 
+try:
+    import markdown  # noqa: F401
+    import fpdf  # noqa: F401
+    HAVE_PDF_DEPS = True
+except ImportError:
+    HAVE_PDF_DEPS = False
+
+
+@unittest.skipUnless(HAVE_PDF_DEPS, "pip install -r tools/requirements-docs.txt")
+class PdfTest(unittest.TestCase):
+    def test_md2pdf_roundtrip(self):
+        import md2pdf
+        with tempfile.TemporaryDirectory() as tmp:
+            md = os.path.join(tmp, "doc.md")
+            out = os.path.join(tmp, "doc.pdf")
+            with open(md, "w", encoding="utf-8") as fh:
+                fh.write("# Title\n\nHello **bold** world \u2192 arrow\n\n"
+                         "| A | B |\n|---|---|\n| 1 | 2 |\n\n```\ncode block\n```\n")
+            size = md2pdf.build(md, out, "doc")
+            self.assertGreater(size, 1000)
+            with open(out, "rb") as fh:
+                self.assertEqual(fh.read(5), b"%PDF-")
+            from pypdf import PdfReader
+            text = "\n".join(p.extract_text() or "" for p in PdfReader(out).pages)
+            self.assertIn("Hello", text)
+            self.assertIn("\u2192", text)
+
+
 if __name__ == "__main__":
     unittest.main()

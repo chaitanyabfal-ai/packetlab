@@ -1,0 +1,4 @@
+DejaVu fonts (DejaVuSans*, DejaVuSansMono*) bundled here so `make pdf` works
+offline. They are distributed under the permissive DejaVu Fonts license
+(Bitstream Vera derivative), Copyright (c) Bitstream, Inc. / Tavmjong Bah
+and contributors. https://dejavu-fonts.github.io/

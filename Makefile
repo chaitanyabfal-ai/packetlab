@@ -1,9 +1,15 @@
 PY := python3
 
-.PHONY: test fixtures analyze diagram clean
+MD ?= docs/deep-dive.md
+OUT ?= $(basename $(MD)).pdf
+
+.PHONY: test fixtures analyze diagram pdf clean
 
 test:
 	$(PY) tools/test_tools.py -v
+
+pdf:
+	$(PY) tools/md2pdf.py $(MD) -o $(OUT)
 
 fixtures:
 	$(PY) tools/pcapgen.py --out fixtures
